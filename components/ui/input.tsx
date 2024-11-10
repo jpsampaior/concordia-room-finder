@@ -10,7 +10,6 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
           className
         )}
       >
-        {/* The icon will be positioned inside the wrapper */}
         <div className="mx-2">{children}</div>
         <input
           type={type}
