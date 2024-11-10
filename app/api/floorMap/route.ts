@@ -19,9 +19,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const imageUrl = `${
-      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
-    }/floor-lb-2.png`;
+    const imageUrl = `${process.env.NEXT_PUBLIC_URL}/floor-lb-2.png`;
     const imageResponse = await fetch(imageUrl);
     const arrayBuffer = await imageResponse.arrayBuffer();
     const image = await loadImage(Buffer.from(arrayBuffer));
