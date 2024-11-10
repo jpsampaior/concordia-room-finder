@@ -10,7 +10,7 @@ export default function Home() {
           Buzzing your way <br /> to every room at Concordia!
         </h1>
         <p className="text-zinc-300">
-          Welcome to Concordia's room-finder! Whether you're new or just need a
+          Welcome to Concordia&apos;s room-finder! Whether you&apos;re new or just need a
           guide, follow the buzz to easily locate any room on campus.
         </p>
       </div>
