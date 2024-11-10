@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Header } from "@/components/header/header";
 
 export const metadata: Metadata = {
   title: "Concordia Room Finder",
@@ -12,10 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-ev bg-cover">
-      <body>
-        
-        <main>{children}</main>
+    <html lang="en">
+      <body className="bg-ev bg-cover h-[95vh]">
+        <Header />
+        <main className="px-10">{children}</main>
       </body>
     </html>
   );
