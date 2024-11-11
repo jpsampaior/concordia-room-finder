@@ -4,8 +4,9 @@ import { useParams } from "next/navigation";
 import { useBuildingInstructions } from "@/lib/hooks/useBuildingInstructions";
 import { parseRoomNumber } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Image, Map, MapPin } from "lucide-react";
+import { Image, Map, MapPin } from "lucide-react";
 import Link from "next/link";
+import { useFloorInstructions } from "@/lib/hooks/useFloorInstructions";
 
 export default function Instructions() {
   const { roomNumber } = useParams();
@@ -13,6 +14,7 @@ export default function Instructions() {
 
   const { buildingInstructions, buildingName, googleMapsLink, photoURL } =
     useBuildingInstructions(building);
+  const { floorInstructions } = useFloorInstructions(building, floor);
 
   if (!building || !room || !floor) {
     return (
@@ -113,11 +115,48 @@ export default function Instructions() {
           </div>
         </div>
       </div>
-      <Button size="lg">
+      {/* <Button size="lg">
         <ArrowDown />
         Next Step
         <ArrowDown />
-      </Button>
+      </Button> */}
+      <div className="space-y-3 text-start">
+        <h2 className="font-bold text-lg text-secondary">
+          2. Go the {floor} floor
+        </h2>
+        <div className="space-y-6 lg:flex items-center lg:space-y-0 lg:justify-between">
+          <div className="space-y-2 lg:w-5/12">
+            {floorInstructions &&
+              floorInstructions
+                .filter((step) => step.option === "stairs")
+                .map((step, index) => (
+                  <div key={index}>
+                    <p className="text-base">
+                      <span className="font-bold">{step.title}</span>:{" "}
+                      {step.instruction}
+                    </p>
+                  </div>
+                ))}
+          </div>
+          <p className="text-center text-secondary font-bold text-xl lg:text-2xl">
+            or
+          </p>
+          <div className="space-y-2 lg:w-5/12">
+            {floorInstructions &&
+              floorInstructions
+                .filter((step) => step.option === "elevator")
+                .map((step, index) => (
+                  <div key={index}>
+                    <p className="text-base">
+                      <span className="font-bold">{step.title}</span>:{" "}
+                      {step.instruction}
+                    </p>
+                  </div>
+                ))}
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 }
