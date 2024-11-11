@@ -18,7 +18,7 @@ export const useRoomInstructions = (building: string, room: string) => {
         const imageUrl = URL.createObjectURL(response.data);
         setRoomMapUrl(imageUrl);
       } catch (err) {
-        setError("Erro ao carregar o mapa da sala.");
+        setError(`Error while loading map: ${err}`);
       } finally {
         setLoading(false);
       }
