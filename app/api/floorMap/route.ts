@@ -19,10 +19,8 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Utilize o caminho correto para carregar a imagem estática
-    const imageUrl = "/floor-lb-2.png"; // O arquivo precisa estar na pasta 'public'
+    const imageUrl = "/floor-lb-2.png";
 
-    // Carrega a imagem com o caminho correto
     const image = await loadImage(process.cwd() + "/public" + imageUrl);
 
     const canvas = createCanvas(image.width, image.height);
