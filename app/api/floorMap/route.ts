@@ -6,7 +6,7 @@ import { parseRoomNumber } from "@/lib/utils";
 export async function GET(request: NextRequest) {
   const roomNumber = request.nextUrl.searchParams.get("roomNumber");
 
-  const { building, room, floor } = parseRoomNumber(roomNumber as string);
+  const { building, floor } = parseRoomNumber(roomNumber as string);
 
   const imageUrl = `/floor-${building}-${floor}.png`;
 
