@@ -4,9 +4,11 @@ import { useParams } from "next/navigation";
 import { useBuildingInstructions } from "@/lib/hooks/useBuildingInstructions";
 import { parseRoomNumber } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Image, Map, MapPin } from "lucide-react";
+import { ImageIcon, Map, MapPin } from "lucide-react";
 import Link from "next/link";
 import { useFloorInstructions } from "@/lib/hooks/useFloorInstructions";
+import { useRoomInstructions } from "@/lib/hooks/useRoomInstructions";
+import Image from "next/image";
 
 export default function Instructions() {
   const { roomNumber } = useParams();
@@ -15,6 +17,7 @@ export default function Instructions() {
   const { buildingInstructions, buildingName, googleMapsLink, photoURL } =
     useBuildingInstructions(building);
   const { floorInstructions } = useFloorInstructions(building, floor);
+  const { roomMapUrl, loading, error } = useRoomInstructions(building, room);
 
   if (!building || !room || !floor) {
     return (
@@ -87,7 +90,7 @@ export default function Instructions() {
                 size="lg"
                 className="border-secondary text-secondary hover:bg-secondary/80 w-[250px]"
               >
-                <Image />
+                <ImageIcon />
                 {buildingName} Photo
               </Button>
             </Link>
@@ -115,14 +118,9 @@ export default function Instructions() {
           </div>
         </div>
       </div>
-      {/* <Button size="lg">
-        <ArrowDown />
-        Next Step
-        <ArrowDown />
-      </Button> */}
       <div className="space-y-3 text-start">
         <h2 className="font-bold text-lg text-secondary">
-          2. Go the {floor} floor
+          2. Go to the {floor} floor
         </h2>
         <div className="space-y-6 lg:flex items-center lg:space-y-0 lg:justify-between">
           <div className="space-y-2 lg:w-5/12">
@@ -156,7 +154,35 @@ export default function Instructions() {
           </div>
         </div>
       </div>
-      
+      <div className="space-y-3 text-start">
+        <h2 className="font-bold text-lg text-secondary">
+          3. Get to {roomNumber}
+        </h2>
+        <div className="">
+          <p className="text-base">
+            <span className="font-bold">
+              Follow the floor map to get to your room
+            </span>
+            : The room will be marked with a red circle on the map.
+          </p>
+          {loading ? (
+            <p className="text-base">Loading map...</p>
+          ) : error ? (
+            <p className="text-base text-red-500">
+              Unable to load map. Please try again later.
+            </p>
+          ) : (
+            roomMapUrl && (
+              <Image
+                src={roomMapUrl}
+                alt={`map-${room}`}
+                width={400}
+                height={400}
+              />
+            )
+          )}
+        </div>
+      </div>
     </div>
   );
 }

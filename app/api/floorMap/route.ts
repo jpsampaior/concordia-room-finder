@@ -20,8 +20,12 @@ export async function GET(request: NextRequest) {
 
   try {
     const imageUrl = "/floor-lb-2.png";
+    const imagePath =
+      process.env.NODE_ENV === "development"
+        ? `http://localhost:3000${imageUrl}`
+        : `${process.cwd()}/public${imageUrl}`;
 
-    const image = await loadImage(process.cwd() + "/public" + imageUrl);
+    const image = await loadImage(imagePath);
 
     const canvas = createCanvas(image.width, image.height);
     const ctx = canvas.getContext("2d");
