@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { useBuildingInstructions } from "@/lib/hooks/useBuildingInstructions";
 import { parseRoomNumber } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Image, Map, MapPin, Pin } from "lucide-react";
+import { ArrowDown, Image, Map, MapPin } from "lucide-react";
 import Link from "next/link";
 
 export default function Instructions() {
@@ -78,19 +78,19 @@ export default function Instructions() {
           <h3 className="text-xl">
             Still unsure? We have some options to help you!
           </h3>
-          <div className="space-x-2">
+          <div className="flex flex-col gap-3 lg:flex-row lg:justify-center">
             <Link href={photoURL || ""} target="_blank">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-secondary text-secondary hover:bg-secondary/80"
+                className="border-secondary text-secondary hover:bg-secondary/80 w-[250px]"
               >
                 <Image />
                 {buildingName} Photo
               </Button>
             </Link>
             <Link href={googleMapsLink || ""} target="_blank">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="w-[250px]">
                 <MapPin />
                 Google Maps Location
               </Button>
@@ -104,7 +104,7 @@ export default function Instructions() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-tertiary text-tertiary hover:bg-tertiary/80"
+                className="border-tertiary text-tertiary hover:bg-tertiary/80 w-[250px]"
               >
                 <Map />
                 Concordia Campus Map
