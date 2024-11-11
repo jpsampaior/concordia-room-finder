@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createCanvas, loadImage } from "canvas";
 import { roomCoordinates } from "@/lib/coordinates";
+import { parseRoomNumber } from "@/lib/utils";
 
 export async function GET(request: NextRequest) {
   const roomNumber = request.nextUrl.searchParams.get("roomNumber");
+
+  const { building, room, floor } = parseRoomNumber(roomNumber as string);
+
+  const imageUrl = `/floor-${building}-${floor}.png`;
 
   if (!roomNumber) {
     return NextResponse.json(
@@ -19,7 +24,6 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const imageUrl = "/floor-lb-2.png";
     const imagePath =
       process.env.NODE_ENV === "development"
         ? `http://localhost:3000${imageUrl}`
