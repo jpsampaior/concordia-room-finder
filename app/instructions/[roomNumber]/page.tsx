@@ -169,7 +169,9 @@ export default function Instructions() {
             <p className="text-base">Loading map...</p>
           ) : error ? (
             <p className="text-base text-red-500">
-              Unable to load map. Please try again later.
+              {error.includes("404")
+                ? "Room not found."
+                : "Unable to load map. Please try again later."}
             </p>
           ) : (
             roomMapUrl && (
