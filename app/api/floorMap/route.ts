@@ -4,7 +4,7 @@ import { roomCoordinates } from "@/lib/coordinates";
 import { parseRoomNumber } from "@/lib/utils";
 
 export async function GET(request: NextRequest) {
-  const roomNumber = request.nextUrl.searchParams.get("roomNumber");
+  const roomNumber = request.nextUrl.searchParams.get("roomNumber")?.toLowerCase();
 
   const { building, floor } = parseRoomNumber(roomNumber as string);
 

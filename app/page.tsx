@@ -34,7 +34,7 @@ export default function Home() {
         >
           <Search size={24} className="text-slate-500" />
         </Input>
-        <Link href={`/instructions/${roomNumber}`}>
+        <Link href={`/instructions/${roomNumber.toLowerCase()}`}>
           <Button className="mx-auto lg:m-0" size="lg">
             Find room
             <ArrowRight />
