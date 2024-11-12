@@ -40,7 +40,7 @@ export default function Home() {
           follow the buzz to easily locate any room on campus.
         </p>
       </div>
-      <div>
+      <div className="space-y-1">
         <h2 className="text-lg text-secondary font-semibold lg:text-2xl lg:font-bold">
           Option 1: Enter the room code
         </h2>
@@ -63,14 +63,14 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="space-y-1">
         <h2 className="text-lg text-secondary font-semibold lg:text-2xl lg:font-bold">
           Option 2: Use the select field to find your room
         </h2>
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div className="text-zinc-300">
             <Select onValueChange={handleSelectChange}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[200px] mx-auto lg:m-0">
                 <SelectValue placeholder="Select a room" />
               </SelectTrigger>
               <SelectContent>
