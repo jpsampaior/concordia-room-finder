@@ -42,7 +42,7 @@ export default function Home() {
       </div>
       <div className="space-y-1">
         <h2 className="text-lg text-secondary font-semibold lg:text-2xl lg:font-bold">
-          Option 1: Enter the room code
+          Option 1: Enter the room code <br className="lg:hidden" /><span className="text-sm font-medium text-zinc-300 lg:text-md lg:font-medium">(Include building prefix e.g: LB251)</span>
         </h2>
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div>
