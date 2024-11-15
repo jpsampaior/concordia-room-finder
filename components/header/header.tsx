@@ -8,7 +8,7 @@ export function Header() {
   const isHome = pathname === "/";
 
   return (
-    <header className={`${isHome ? "absolute z-10" : ""} w-full mt-5`}>
+    <header className={`${isHome ? "lg:absolute z-10" : ""} w-full mt-5`}>
       <Image
         className="mx-auto"
         src="/logo-concordia.png"
