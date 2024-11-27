@@ -16,6 +16,7 @@ export default {
         primary: "#912338",
         secondary: "#b18c62",
         tertiary: "#D9BF77",
+        footer: "#333232",
         dark: {
           "200": "#0D0F10",
           "300": "#131619",

@@ -29,7 +29,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-[90vh] flex flex-col text-center space-y-6 mt-5 lg:text-start lg:justify-center lg:min-h-screen lg:mt-0">
+    <div className="min-h-[90vh] flex flex-col text-center space-y-6 mt-5 lg:text-start lg:justify-center lg:min-h-[91vh] lg:mt-0">
       <div className="space-y-2">
         <h1 className="text-3xl text-tertiary font-semibold lg:text-6xl lg:font-extrabold">
           Buzzing your way <br /> to every room at Concordia!
