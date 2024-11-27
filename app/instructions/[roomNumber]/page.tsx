@@ -3,12 +3,11 @@
 import { useParams } from "next/navigation";
 import { useBuildingInstructions } from "@/lib/hooks/useBuildingInstructions";
 import { parseRoomNumber } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { ImageIcon, Map, MapPin } from "lucide-react";
-import Link from "next/link";
 import { useFloorInstructions } from "@/lib/hooks/useFloorInstructions";
 import { useRoomInstructions } from "@/lib/hooks/useRoomInstructions";
 import Image from "next/image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { HelpButtons } from "@/components/help-buttons";
 
 export default function Instructions() {
   const { roomNumber } = useParams();
@@ -19,7 +18,7 @@ export default function Instructions() {
   const { floorInstructions } = useFloorInstructions(building, floor);
   const { roomMapUrl, loading, error } = useRoomInstructions(building, room);
 
-  if (!building || !room || !floor) {
+  if (!building || !room || !floor || error?.includes("404")) {
     return (
       <div className="flex h-[95vh] justify-center items-center">
         <h1 className="text-zinc-300 text-xl">Invalid room number</h1>
@@ -37,154 +36,176 @@ export default function Instructions() {
     );
   }
 
+  if (loading) {
+    return (
+      <div className="flex h-[95vh] justify-center items-center">
+        <h1 className="text-zinc-300 text-xl">Loading...</h1>
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-10 text-zinc-300 text-center mt-6">
-      <div className="space-y-4">
+    <div className="space-y-6 text-zinc-300 text-center mt-6">
+      <div className="space-y-8">
         <h1 className="text-2xl text-tertiary font-bold">
           Ready to buzz in? Let&apos;s find your room!
         </h1>
-        <div className="space-y-3 text-start">
-          <h2 className="font-bold text-lg text-secondary">
-            1. Find the {buildingName} Building
-          </h2>
-          <div className="space-y-6 lg:flex items-center lg:space-y-0 lg:justify-between">
-            <div className="space-y-2 lg:w-5/12">
-              {buildingInstructions &&
-                buildingInstructions
-                  .filter((step) => step.option === "metro")
-                  .map((step, index) => (
-                    <div key={index}>
-                      <p className="text-base">
-                        <span className="font-bold">{step.title}</span>:{" "}
-                        {step.instruction}
-                      </p>
-                    </div>
-                  ))}
-            </div>
-            <p className="text-center text-secondary font-bold text-xl lg:text-2xl">
-              or
-            </p>
-            <div className="space-y-2 lg:w-5/12">
-              {buildingInstructions &&
-                buildingInstructions
-                  .filter((step) => step.option === "street")
-                  .map((step, index) => (
-                    <div key={index}>
-                      <p className="text-base">
-                        <span className="font-bold">{step.title}</span>:{" "}
-                        {step.instruction}
-                      </p>
-                    </div>
-                  ))}
-            </div>
-          </div>
-        </div>
-        <div className="space-y-2">
-          <h3 className="text-xl">
-            Still unsure? We have some options to help you!
-          </h3>
-          <div className="flex flex-col gap-3 lg:flex-row lg:justify-center">
-            <Link href={photoURL || ""} target="_blank">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-secondary text-secondary hover:bg-secondary/80 w-[250px]"
-              >
-                <ImageIcon />
-                {buildingName} Photo
-              </Button>
-            </Link>
-            <Link href={googleMapsLink || ""} target="_blank">
-              <Button variant="outline" size="lg" className="w-[250px]">
-                <MapPin />
-                Google Maps Location
-              </Button>
-            </Link>
-            <Link
-              href={
-                "https://www.concordia.ca/content/dam/common/docs/maps/campus-maps.pdf"
-              }
-              target="_blank"
+        <div className="space-y-5">
+          <div className="flex flex-col gap-5 lg:flex-row">
+            <Tabs
+              defaultValue="metro"
+              className="lg:w-1/2 space-y-3 text-start"
             >
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-tertiary text-tertiary hover:bg-tertiary/80 w-[250px]"
-              >
-                <Map />
-                Concordia Campus Map
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className="space-y-3 text-start">
-        <h2 className="font-bold text-lg text-secondary">
-          2. Go to the {floor} floor
-        </h2>
-        <div className="space-y-6 lg:flex items-center lg:space-y-0 lg:justify-between">
-          <div className="space-y-2 lg:w-5/12">
-            {floorInstructions &&
-              floorInstructions
-                .filter((step) => step.option === "stairs")
-                .map((step, index) => (
-                  <div key={index}>
-                    <p className="text-base">
-                      <span className="font-bold">{step.title}</span>:{" "}
-                      {step.instruction}
-                    </p>
+              <div>
+                <h2 className="font-bold text-lg text-secondary">
+                  1. Find the {buildingName} Building
+                </h2>
+                <div>
+                  <h4 className="text-md font-bold">Where are you at?</h4>
+                  <TabsList>
+                    <TabsTrigger value="metro">Metro</TabsTrigger>
+                    <TabsTrigger value="other">Street</TabsTrigger>
+                  </TabsList>
+                </div>
+              </div>
+              <div className="space-y-6 lg:flex items-center lg:space-y-0 lg:justify-between">
+                <TabsContent value="metro">
+                  <div className="space-y-2">
+                    {buildingInstructions &&
+                      buildingInstructions
+                        .filter((step) => step.option === "metro")
+                        .map((step, index) => (
+                          <div key={index}>
+                            <h5 className="font-bold">{step.title}</h5>
+                            <div className="space-y-1">
+                              {step.instruction.map((instruction, index) => (
+                                <p key={index} className="text-base">
+                                  {instruction}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
                   </div>
-                ))}
-          </div>
-          <p className="text-center text-secondary font-bold text-xl lg:text-2xl">
-            or
-          </p>
-          <div className="space-y-2 lg:w-5/12">
-            {floorInstructions &&
-              floorInstructions
-                .filter((step) => step.option === "elevator")
-                .map((step, index) => (
-                  <div key={index}>
-                    <p className="text-base">
-                      <span className="font-bold">{step.title}</span>:{" "}
-                      {step.instruction}
-                    </p>
+                </TabsContent>
+                <TabsContent value="other">
+                  <div className="space-y-2">
+                    {buildingInstructions &&
+                      buildingInstructions
+                        .filter((step) => step.option === "street")
+                        .map((step, index) => (
+                          <div key={index}>
+                            <h5 className="font-bold">{step.title}</h5>
+                            <div className="space-y-1">
+                              {step.instruction.map((instruction, index) => (
+                                <p key={index} className="text-base">
+                                  {instruction}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
                   </div>
-                ))}
+                </TabsContent>
+              </div>
+            </Tabs>
+            <Tabs
+              defaultValue="stairs"
+              className="lg:w-1/2 space-y-3 text-start"
+            >
+              <div>
+                <h2 className="font-bold text-lg text-secondary">
+                  2. Go to the {floor} floor
+                </h2>
+                <div>
+                  <h4 className="text-md font-bold">
+                    What option do you want to take?
+                  </h4>
+                  <TabsList>
+                    <TabsTrigger value="stairs">Stairs</TabsTrigger>
+                    <TabsTrigger value="elevator">Elevator</TabsTrigger>
+                  </TabsList>
+                </div>
+              </div>
+              <div className="space-y-6 lg:flex items-center lg:space-y-0 lg:justify-between">
+                <TabsContent value="stairs">
+                  <div className="space-y-2">
+                    {floorInstructions &&
+                      floorInstructions
+                        .filter((step) => step.option === "stairs")
+                        .map((step, index) => (
+                          <div key={index}>
+                            <h5 className="font-bold">{step.title}</h5>
+                            <div className="space-y-1">
+                              {step.instruction.map((instruction, index) => (
+                                <p key={index} className="text-base">
+                                  {instruction}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                  </div>
+                </TabsContent>
+                <TabsContent value="elevator">
+                  <div className="space-y-2">
+                    {floorInstructions &&
+                      floorInstructions
+                        .filter((step) => step.option === "elevator")
+                        .map((step, index) => (
+                          <div key={index}>
+                            <h5 className="font-bold">{step.title}</h5>
+                            <div className="space-y-1">
+                              {step.instruction.map((instruction, index) => (
+                                <p key={index} className="text-base">
+                                  {instruction}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                  </div>
+                </TabsContent>
+              </div>
+            </Tabs>
+          </div>
+          <div className="space-y-3 text-start">
+            <h2 className="font-bold text-lg text-secondary">
+              3. Get to {roomNumber}
+            </h2>
+            <div className="space-y-2">
+              <p className="text-base">
+                <span className="font-bold">
+                  Follow the floor map to get to your room
+                </span>
+                : The room will be marked with a red circle on the map.
+              </p>
+              {error ? (
+                <p className="text-base text-red-500">
+                  {!error.includes("404") &&
+                    "Unable to load map. Please try again later."}
+                </p>
+              ) : (
+                roomMapUrl && (
+                  <Image
+                    src={roomMapUrl}
+                    alt={`map-${room}`}
+                    width={400}
+                    height={400}
+                  />
+                )
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <div className="space-y-3 text-start">
-        <h2 className="font-bold text-lg text-secondary">
-          3. Get to {roomNumber}
-        </h2>
-        <div className="">
-          <p className="text-base">
-            <span className="font-bold">
-              Follow the floor map to get to your room
-            </span>
-            : The room will be marked with a red circle on the map.
-          </p>
-          {loading ? (
-            <p className="text-base">Loading map...</p>
-          ) : error ? (
-            <p className="text-base text-red-500">
-              {error.includes("404")
-                ? "Room not found."
-                : "Unable to load map. Please try again later."}
-            </p>
-          ) : (
-            roomMapUrl && (
-              <Image
-                src={roomMapUrl}
-                alt={`map-${room}`}
-                width={400}
-                height={400}
-              />
-            )
-          )}
-        </div>
-      </div>
+      {photoURL && buildingName && googleMapsLink && (
+        <HelpButtons
+          photoURL={photoURL}
+          buildingName={buildingName}
+          googleMapsLink={googleMapsLink}
+        />
+      )}
     </div>
   );
 }
