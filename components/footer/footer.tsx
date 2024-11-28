@@ -1,5 +1,15 @@
+import { AdditionalLinks } from "../additional-links";
 import { Button } from "../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 import { ContactInformation } from "./contact-information";
+import { resources } from "@/lib/additional-links";
 
 export function Footer() {
   return (
@@ -12,7 +22,32 @@ export function Footer() {
               We have a list of useful links that may help you
             </span>
           </div>
-          <Button variant="secondary">Click here</Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="secondary">Click here</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Additional Resources</DialogTitle>
+                <DialogDescription>
+                  This session is designed to provide essential insights into
+                  key resources and facilities at Concordia University. Whether
+                  you're seeking dining options, study spaces, or information
+                  about safety and printing services, we've got you covered.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex flex-col gap-2">
+                {resources.map((resource) => (
+                  <AdditionalLinks
+                    key={resource.title}
+                    link={resource.link}
+                    title={resource.title}
+                    description={resource.description}
+                  />
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
       <div className="bg-footer text-zinc-300 py-5">
