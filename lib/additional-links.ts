@@ -1,58 +1,72 @@
 export const resources = [
     {
-      title: "Food and Dining",
+      section: "Food and Dining",
+      items: [
+          {
       description: "Food & Dining - Concordia University",
       link: "https://www.concordia.ca/campus-life/food-dining.html",
     },
+]'
+    },
     {
-      title: "Study Spaces",
+      section: "Study Spaces",    
+      items: [
+          {
       description: "Webster Library: Quiet study zones, group rooms, and tech-enabled workspaces for students.",
       link: "https://library.concordia.ca/locations/study-spaces.php",
     },
     {
-      title: "Study Areas outside library",
-      description: "Multiple floors with study corners equipped with seating and power outlets.",
+      description: "Study Areas outside library: Multiple floors with study corners equipped with seating and power outlets.",
       link: "https://www.concordia.ca/students/success/superb-study-spots-at-concordia.html",
     },
     {
-      title: "EV Building Lounges",
-      description: "Open lounges for group and individual study.",
+      description: "EV Building Lounges: Open lounges for group and individual study.",
       link: "https://www.concordia.ca/maps/buildings/concordia-panoramas/ev-lounge-and-terrace.html",
     },
+
+],
+    },
     {
-      title: "Fire Exits",
+      section: "Campus Safety Services",
       description: "Hall Building Emergency Exits: Located at the end of hallways and near stairwells. Evacuation routes are displayed on all floors.",
       link: "https://www.concordia.ca/campus-life/safety.html",
     },
     {
-      title: "Campus Safety Services",
+      title: "SAFETY FIRST",
       description: "Guidelines for safety during emergencies.",
       link: "https://www.concordia.ca/campus-life/security.html",
     },
+    ],
+  },
+{
+    section: "Print Store",
+    items: [
     {
-      title: "Print Store - DPrint Services",
-      description: "Printing stations for black-and-white and color printing on campus.",
+      description: "DPrint Services on campus.",
       link: "https://www.concordia.ca/it/services/dprint-public.html",
     },
     {
-      title: "Library Printing Services",
-      description: "Additional printers are available in the Webster Library.",
+      description: "Library Printing Services",
       link: "https://www.concordia.ca/print/store.html",
     },
+ ],
+  },
     {
-      title: "Computer Labs in Hall Building",
-      description: "General and course-specific labs accessible with login credentials.",
+      section: "Labs and Facilities",
+      items: [
+      {
+      description: "Computer Labs in Hall Building with login credentials.",
       link: "https://www.concordia.ca/it/services/comp-labs-encs.html",
     },
     {
-      title: "Specialized Labs in EV Building",
-      description: "Advanced engineering and design labs for research and projects.",
+      description: "Specialized Labs in EV Building",
       link: "https://www.concordia.ca/it/services/computer-labs.html",
     },
     {
-      title: "Library Room Names and Facilities",
       description: "Library room names and facilities.",
       link: "https://library.concordia.ca/locations/floor-plans/webster-library.php",
     },
+ ],
+},
   ];
   
