@@ -29,7 +29,7 @@ export const resources = [
     {
       section: "Campus Safety Services",
       items: [
-    },
+    
 {
       description: "Emergency Exits.",
       link: "https://www.concordia.ca/campus-life/safety.html",
@@ -65,10 +65,11 @@ export const resources = [
       link: "https://www.concordia.ca/it/services/computer-labs.html",
     },
     {
-      description: "Library room names and facilities.",
+      description: "Library Rooms and facilities.",
       link: "https://library.concordia.ca/locations/floor-plans/webster-library.php",
     },
  ],
 },
   ];
+  
   
