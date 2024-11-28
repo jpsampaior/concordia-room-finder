@@ -32,8 +32,8 @@ export function Footer() {
                 <DialogDescription>
                   This session is designed to provide essential insights into
                   key resources and facilities at Concordia University. Whether
-                  you're seeking dining options, study spaces, or information
-                  about safety and printing services, we've got you covered.
+                  you&apos;re seeking dining options, study spaces, or information
+                  about safety and printing services, we&apos;ve got you covered.
                 </DialogDescription>
               </DialogHeader>
               <div className="flex flex-col gap-2">
