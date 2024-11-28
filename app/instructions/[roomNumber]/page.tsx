@@ -64,7 +64,7 @@ export default function Instructions() {
                   <h4 className="text-md font-bold">Where are you at?</h4>
                   <TabsList>
                     <TabsTrigger value="metro">Metro</TabsTrigger>
-                    <TabsTrigger value="other">Street</TabsTrigger>
+                    <TabsTrigger value="other">Other</TabsTrigger>
                   </TabsList>
                 </div>
               </div>
