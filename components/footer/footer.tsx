@@ -123,7 +123,7 @@ export function Footer() {
   return (
     <footer className="text-zinc-400 pt-5">
       <div className="bg-dark-300 p-4">
-        <div className="flex justify-between items-center mx-auto lg:w-3/4">
+        <div className="flex justify-between items-center mx-auto gap-3 lg:w-3/4">
           <div>
             <h6 className="font-semibold">Additional Resources</h6>
             <span className="text-sm">
@@ -152,14 +152,12 @@ export function Footer() {
                 <div className="flex flex-col gap-4">
                   {resources.map((resource) => (
                     <div key={resource.section}>
-                      {/* Section Header */}
                       <h3 className="text-white font-bold text-lg mb-2">{resource.section}</h3>
                       <ul className="space-y-2 pl-4">
                         {resource.items.map((item, index) => (
                           <li key={index}>
                             <AdditionalLinks
                               link={item.link}
-                              title="" // Pass an empty title to suppress rendering
                               description={item.description}
                             />
                           </li>

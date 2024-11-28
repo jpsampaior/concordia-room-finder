@@ -8,6 +8,7 @@ import { useRoomInstructions } from "@/lib/hooks/useRoomInstructions";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HelpButtons } from "@/components/help-buttons";
+import { MoveRight } from "lucide-react";
 
 export default function Instructions() {
   const { roomNumber } = useParams();
@@ -57,11 +58,11 @@ export default function Instructions() {
               className="lg:w-1/2 space-y-3 text-start"
             >
               <div>
-                <h2 className="font-bold text-lg text-secondary">
+                <h2 className="font-bold text-xl text-secondary">
                   1. Find the {buildingName} Building
                 </h2>
                 <div>
-                  <h4 className="text-md font-bold">Where are you at?</h4>
+                  <h4 className="text-lg font-bold">Where are you at?</h4>
                   <TabsList>
                     <TabsTrigger value="metro">Metro</TabsTrigger>
                     <TabsTrigger value="other">Other</TabsTrigger>
@@ -76,7 +77,7 @@ export default function Instructions() {
                         .filter((step) => step.option === "metro")
                         .map((step, index) => (
                           <div key={index}>
-                            <h5 className="font-bold">{step.title}</h5>
+                            <h5 className="font-bold text-lg">{step.title}</h5>
                             <div className="space-y-1">
                               {step.instruction.map((instruction, index) => (
                                 <p key={index} className="text-base">
@@ -95,7 +96,7 @@ export default function Instructions() {
                         .filter((step) => step.option === "other")
                         .map((step, index) => (
                           <div key={index}>
-                            <h5 className="font-bold">{step.title}</h5>
+                            <h5 className="font-bold text-lg">{step.title}</h5>
                             <div className="space-y-1">
                               {step.instruction.map((instruction, index) => (
                                 <p key={index} className="text-base">
@@ -114,11 +115,11 @@ export default function Instructions() {
               className="lg:w-1/2 space-y-3 text-start"
             >
               <div>
-                <h2 className="font-bold text-lg text-secondary">
+                <h2 className="font-bold text-xl text-secondary">
                   2. Go to the {floor} floor
                 </h2>
                 <div>
-                  <h4 className="text-md font-bold">
+                  <h4 className="text-lg font-bold">
                     What option do you want to take?
                   </h4>
                   <TabsList>
@@ -135,7 +136,7 @@ export default function Instructions() {
                         .filter((step) => step.option === "stairs")
                         .map((step, index) => (
                           <div key={index}>
-                            <h5 className="font-bold">{step.title}</h5>
+                            <h5 className="font-bold text-lg">{step.title}</h5>
                             <div className="space-y-1">
                               {step.instruction.map((instruction, index) => (
                                 <p key={index} className="text-base">
@@ -154,7 +155,7 @@ export default function Instructions() {
                         .filter((step) => step.option === "elevator")
                         .map((step, index) => (
                           <div key={index}>
-                            <h5 className="font-bold">{step.title}</h5>
+                            <h5 className="font-bold text-lg">{step.title}</h5>
                             <div className="space-y-1">
                               {step.instruction.map((instruction, index) => (
                                 <p key={index} className="text-base">
@@ -170,15 +171,17 @@ export default function Instructions() {
             </Tabs>
           </div>
           <div className="space-y-3 text-start">
-            <h2 className="font-bold text-lg text-secondary">
+            <h2 className="font-bold text-xl text-secondary">
               3. Get to {roomNumber}
             </h2>
             <div className="space-y-2">
+              <div>
+                <h5 className="font-bold text-lg">
+                  Follow the floor map to get to your room:{" "}
+                </h5>
+              </div>
               <p className="text-base">
-                <span className="font-bold">
-                  Follow the floor map to get to your room
-                </span>
-                : The room will be marked with a red circle on the map.
+                → The room will be marked with a red circle on the map.
               </p>
               {error ? (
                 <p className="text-base text-red-500">
