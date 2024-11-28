@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ImageIcon, Lock, Map, MapPin } from "lucide-react";
+import { ImageIcon, Map, MapPin } from "lucide-react";
 import Link from "next/link";
 
 export function HelpButtons({photoURL, buildingName, googleMapsLink}: {photoURL: string, buildingName: string, googleMapsLink: string}) {
