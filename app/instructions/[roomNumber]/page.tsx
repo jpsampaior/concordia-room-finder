@@ -92,7 +92,7 @@ export default function Instructions() {
                   <div className="space-y-2">
                     {buildingInstructions &&
                       buildingInstructions
-                        .filter((step) => step.option === "street")
+                        .filter((step) => step.option === "other")
                         .map((step, index) => (
                           <div key={index}>
                             <h5 className="font-bold">{step.title}</h5>
