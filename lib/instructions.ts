@@ -11,7 +11,7 @@ export const websterLibraryInstructions: Step[] = [
     order: 1,
     title: "Start at Guy-Concordia Metro Station",
     instruction: [
-      "Follow the signs to exit the metro via 'Rue Guy' towards Concordia University Campus.",
+      "-> Follow the signs to exit the metro via 'Rue Guy' towards Concordia University Campus.",
     ],
     option: "metro",
   },
@@ -19,25 +19,16 @@ export const websterLibraryInstructions: Step[] = [
     order: 2,
     title: "Navigate the Tunnels Carefully",
     instruction: [
-      "There's a tunnel from the metro exit that directs you to the different buildings on campus.",
-      "Look specifically for signs pointing to Library Building to ensure you are heading in the right direction.",
+      "-> The tunnel connects to different buildings; follow signs to the Library Building.",
     ],
     option: "metro",
   },
   {
     order: 1,
-    title: "Head to the Corner of De Maisonneuve and Mackay",
+    title: "Head to the intersection of De Maisonneuve and Mackay",
     instruction: [
-      "Make your way to the intersection of Boulevard de Maisonneuve and Rue Mackay.",
-      "The Webster Library is located at the middle of the block, in front of the Hall Building.",
-    ],
-    option: "other",
-  },
-  {
-    order: 2,
-    title: "Look for the Orange and Gray Building",
-    instruction: [
-      "The main entrance is located at 1400 De Maisonneuve Blvd. West on Mackay street.",
+      "-> Make your way to the intersection of Boulevard de Maisonneuve and Rue Mackay.",
+      "-> The Webster Library is oposite the Hall Building; The main entrance is located at 1400 De Maisonneuve Blvd. West on Mackay street.",
     ],
     option: "other",
   },
@@ -48,9 +39,9 @@ export const websterLibraryFloorInstructions: Step[] = [
     order: 1,
     title: "Enter the Building and Head to the Elevators",
     instruction: [
-      "Once inside, make your way to the elevators located on the right side of the building.",
-      "Take the elevator to the floor where your room is located. ",
-      "Be sure to check if the elevator can take you to the floor you need to go to, as some elevators only go to specific floors.",
+      "-> Once inside, make your way to the elevators on the right.",
+      "-> Take the elevator to the floor where your room is located. ",
+      "Check if the elevator reaches your floor, as some only access specific levels.",
     ],
     option: "elevator",
     floor: ["2", "3", "4", "5"],
@@ -59,7 +50,7 @@ export const websterLibraryFloorInstructions: Step[] = [
     order: 1,
     title: "Take the Stairs to the 2nd floor",
     instruction: [
-      "If you prefer to take the stairs, you can find them on the right side of the building, next to the elevator.",
+      "-> If you prefer to take the stairs, you can find them on the right side of the building, next to the elevator.",
       "Be aware that these stairs only take you to the 2nd floor",
     ],
     option: "stairs",
