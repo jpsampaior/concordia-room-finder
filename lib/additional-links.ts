@@ -6,7 +6,7 @@ export const resources = [
       description: "Food & Dining on Campus",
       link: "https://www.concordia.ca/campus-life/food-dining.html",
     },
-]'
+],
     },
     {
       section: "Study Spaces",    
