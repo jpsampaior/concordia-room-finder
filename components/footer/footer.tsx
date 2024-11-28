@@ -30,15 +30,16 @@ export function Footer() {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Additional Resources</DialogTitle>
-                <DialogDescription>
+                <DialogDescription className="hidden lg:block">
                   This session is designed to provide essential insights into
-                  key resources and facilities at Concordia University. Whether
-                  you&apos;re seeking dining options, study spaces, or
-                  information about safety and printing services, we&apos;ve got
-                  you covered.
+                  key resources and facilities at Concordia University.
+                </DialogDescription>
+                <DialogDescription className="block lg:hidden">
+                  Scroll to see essential insights into key resources and
+                  facilities at Concordia University.
                 </DialogDescription>
               </DialogHeader>
-              <ScrollArea className="h-[60vh]">
+              <ScrollArea className="min-h-[60vh] max-h-[70vh]">
                 <div className="flex flex-col gap-2 ">
                   {resources.map((resource) => (
                     <AdditionalLinks
