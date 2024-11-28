@@ -3,7 +3,7 @@ export const resources = [
       section: "Food and Dining",
       items: [
           {
-      description: "Food & Dining - Concordia University",
+      description: "Food & Dining on Campus",
       link: "https://www.concordia.ca/campus-life/food-dining.html",
     },
 ]'
@@ -28,11 +28,13 @@ export const resources = [
     },
     {
       section: "Campus Safety Services",
-      description: "Hall Building Emergency Exits: Located at the end of hallways and near stairwells. Evacuation routes are displayed on all floors.",
+      items: [
+    },
+{
+      description: "Emergency Exits.",
       link: "https://www.concordia.ca/campus-life/safety.html",
     },
     {
-      title: "SAFETY FIRST",
       description: "Guidelines for safety during emergencies.",
       link: "https://www.concordia.ca/campus-life/security.html",
     },
@@ -46,7 +48,7 @@ export const resources = [
       link: "https://www.concordia.ca/it/services/dprint-public.html",
     },
     {
-      description: "Library Printing Services",
+      description: "Library Printing Services. ",
       link: "https://www.concordia.ca/print/store.html",
     },
  ],
