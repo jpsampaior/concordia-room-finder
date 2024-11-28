@@ -32,11 +32,11 @@ export function Footer() {
                 <DialogTitle>Additional Resources</DialogTitle>
                 <DialogDescription className="hidden lg:block">
                   This session is designed to provide essential insights into
-                  key resources and facilities at Concordia University.
+                  key resources and facilities at Concordia University. Click on the items to see more.
                 </DialogDescription>
                 <DialogDescription className="block lg:hidden">
                   Scroll to see essential insights into key resources and
-                  facilities at Concordia University.
+                  facilities at Concordia University. Click on the items to see more.
                 </DialogDescription>
               </DialogHeader>
               <ScrollArea className="min-h-[60vh] max-h-[70vh]">
