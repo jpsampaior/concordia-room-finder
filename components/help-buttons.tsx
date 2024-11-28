@@ -40,21 +40,6 @@ export function HelpButtons({photoURL, buildingName, googleMapsLink}: {photoURL:
             Concordia Campus Map
           </Button>
         </Link>
-        <Link
-          href={
-            "https://fis.encs.concordia.ca/helpdesk-cgi/doorcode.cgi"
-          }
-          target="_blank"
-        >
-          <Button
-            variant="outline"
-            size="lg"
-            className="w-[250px]"
-          >
-            <Lock />
-            How to get ENCS Lab Codes
-          </Button>
-        </Link>
       </div>
     </div>
   );
