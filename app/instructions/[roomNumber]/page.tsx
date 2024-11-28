@@ -18,7 +18,7 @@ export default function Instructions() {
   const { floorInstructions } = useFloorInstructions(building, floor);
   const { roomMapUrl, loading, error } = useRoomInstructions(building, room);
 
-  if (!building || !room || !floor || error?.includes("404")) {
+  if (!building || !room || !floor || (building == "lb" && error?.includes("404"))) {
     return (
       <div className="flex h-[95vh] justify-center items-center">
         <h1 className="text-zinc-300 text-xl">Invalid room number</h1>
@@ -28,10 +28,11 @@ export default function Instructions() {
 
   if (building !== "lb") {
     return (
-      <div className="flex h-[95vh] justify-center items-center">
+      <div className="flex flex-col h-[85vh] justify-center items-center">
         <h1 className="text-zinc-300 text-xl">
-          Instructions not available for this building
+          Instructions not available for this building yet
         </h1>
+        <span className="text-secondary text-lg">Available buildings: Webster Library (LB)</span>
       </div>
     );
   }
