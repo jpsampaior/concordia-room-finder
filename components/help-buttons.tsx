@@ -9,7 +9,7 @@ export function HelpButtons({photoURL, buildingName, googleMapsLink}: {photoURL:
         Still unsure? We have some options to help you!
       </h3>
       <div className="flex flex-col gap-3 lg:flex-row lg:justify-center">
-        <Link href={photoURL || ""} target="_blank">
+        {/* <Link href={photoURL || ""} target="_blank">
           <Button
             variant="outline"
             size="lg"
@@ -18,11 +18,11 @@ export function HelpButtons({photoURL, buildingName, googleMapsLink}: {photoURL:
             <ImageIcon />
             {buildingName} Photo
           </Button>
-        </Link>
+        </Link> */}
         <Link href={googleMapsLink || ""} target="_blank">
           <Button variant="outline" size="lg" className="w-[250px]">
             <MapPin />
-            Google Maps Location
+            Building Google Maps Location
           </Button>
         </Link>
         <Link
