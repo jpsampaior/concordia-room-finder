@@ -8,6 +8,7 @@ import { useRoomInstructions } from "@/lib/hooks/useRoomInstructions";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HelpButtons } from "@/components/help-buttons";
+import LibraryPic from "@/public/lb-building.jpg";
 
 export default function Instructions() {
   const { roomNumber } = useParams();
@@ -18,7 +19,12 @@ export default function Instructions() {
   const { floorInstructions } = useFloorInstructions(building, floor);
   const { roomMapUrl, loading, error } = useRoomInstructions(building, room);
 
-  if (!building || !room || !floor || (building == "lb" && error?.includes("404"))) {
+  if (
+    !building ||
+    !room ||
+    !floor ||
+    (building == "lb" && error?.includes("404"))
+  ) {
     return (
       <div className="flex h-[95vh] justify-center items-center">
         <h1 className="text-zinc-300 text-xl">Invalid room number</h1>
@@ -32,7 +38,9 @@ export default function Instructions() {
         <h1 className="text-zinc-300 text-xl">
           Instructions not available for this building yet
         </h1>
-        <span className="text-secondary text-lg">Available buildings: Webster Library (LB)</span>
+        <span className="text-secondary text-lg">
+          Available buildings: Webster Library (LB)
+        </span>
       </div>
     );
   }
@@ -85,6 +93,14 @@ export default function Instructions() {
                                 </p>
                               ))}
                             </div>
+                            <div className="mt-3">
+                              {step.image && (
+                                <img
+                                  src={step.image}
+                                  className="w-full h-auto"
+                                />
+                              )}
+                            </div>
                           </div>
                         ))}
                   </div>
@@ -103,6 +119,14 @@ export default function Instructions() {
                                   {instruction}
                                 </p>
                               ))}
+                            </div>
+                            <div className="mt-3">
+                              {step.image && (
+                                <img
+                                  src={step.image}
+                                  className="w-full h-auto"
+                                />
+                              )}
                             </div>
                           </div>
                         ))}
@@ -144,6 +168,14 @@ export default function Instructions() {
                                 </p>
                               ))}
                             </div>
+                            <div className="mt-3">
+                              {step.image && (
+                                <img
+                                  src={step.image}
+                                  className="w-full h-auto"
+                                />
+                              )}
+                            </div>
                           </div>
                         ))}
                   </div>
@@ -162,6 +194,14 @@ export default function Instructions() {
                                   {instruction}
                                 </p>
                               ))}
+                            </div>
+                            <div className="mt-3">
+                              {step.image && (
+                                <img
+                                  src={step.image}
+                                  className="w-full h-auto"
+                                />
+                              )}
                             </div>
                           </div>
                         ))}
