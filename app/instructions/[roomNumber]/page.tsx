@@ -12,7 +12,7 @@ export default function Instructions() {
   const { roomNumber } = useParams();
   const { building, room, floor } = parseRoomNumber(roomNumber as string);
 
-  const { buildingInstructions, buildingName, googleMapsLink, photoURL } =
+  const { buildingInstructions, buildingName, googleMapsLink } =
     useBuildingInstructions(building);
   const { floorInstructions } = useFloorInstructions(building, floor);
   const { roomMapUrl, loading, error } = useRoomInstructions(building, room);
@@ -241,10 +241,8 @@ export default function Instructions() {
           </div>
         </div>
       </div>
-      {photoURL && buildingName && googleMapsLink && (
+      {googleMapsLink && (
         <HelpButtons
-          photoURL={photoURL}
-          buildingName={buildingName}
           googleMapsLink={googleMapsLink}
         />
       )}

@@ -7,16 +7,14 @@ export function useBuildingInstructions(building: string) {
   >(null);
   const [buildingName, setBuildingName] = useState<string | null>(null);
   const [googleMapsLink, setGoogleMapsLink] = useState<string | null>(null);
-  const [photoURL, setPhotoURL] = useState<string | null>(null);
 
   useEffect(() => {
     if (building === "lb") {
       setBuildingInstructions(websterLibraryInstructions);
       setBuildingName("Webster Library");
       setGoogleMapsLink("https://maps.app.goo.gl/CCZFxwnxguz9zqFGA");
-      setPhotoURL("/lb-building.jpg");
     }
   }, [building]);
 
-  return { buildingInstructions, buildingName, googleMapsLink, photoURL };
+  return { buildingInstructions, buildingName, googleMapsLink };
 }
