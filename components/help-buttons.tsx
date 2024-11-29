@@ -10,7 +10,7 @@ export function HelpButtons({googleMapsLink}: {googleMapsLink: string}) {
       </h3>
       <div className="flex flex-col gap-3 lg:flex-row lg:justify-center">
         <Link href={googleMapsLink || ""} target="_blank">
-          <Button variant="outline" size="lg" className="w-[250px]">
+          <Button variant="outline" size="lg" className="w-[280px]">
             <MapPin />
             Building Google Maps Location
           </Button>
@@ -24,7 +24,7 @@ export function HelpButtons({googleMapsLink}: {googleMapsLink: string}) {
           <Button
             variant="outline"
             size="lg"
-            className="border-tertiary text-tertiary hover:bg-tertiary/80 w-[250px]"
+            className="border-tertiary text-tertiary hover:bg-tertiary/80 w-[280px]"
           >
             <Map />
             Concordia Campus Map
