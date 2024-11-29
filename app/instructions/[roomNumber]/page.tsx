@@ -54,16 +54,16 @@ export default function Instructions() {
   }
 
   return (
-    <div className="space-y-6 text-zinc-300 text-center mt-6">
+    <div className="space-y-6 text-zinc-300 text-center mt-6 lg:w-1/2 lg:mx-auto">
       <div className="space-y-8">
         <h1 className="text-2xl text-tertiary font-bold">
           Ready to buzz in? Let&apos;s find your room!
         </h1>
         <div className="space-y-5">
-          <div className="flex flex-col gap-5 lg:flex-row">
+          <div className="flex flex-col gap-5">
             <Tabs
               defaultValue="metro"
-              className="lg:w-1/2 space-y-3 text-start"
+              className=" space-y-3 text-start"
             >
               <div>
                 <h2 className="font-bold text-xl text-secondary">
@@ -136,7 +136,7 @@ export default function Instructions() {
             </Tabs>
             <Tabs
               defaultValue="stairs"
-              className="lg:w-1/2 space-y-3 text-start"
+              className=" space-y-3 text-start"
             >
               <div>
                 <h2 className="font-bold text-xl text-secondary">
@@ -230,9 +230,10 @@ export default function Instructions() {
                 </p>
               ) : (
                 roomMapUrl && (
-                  <Image
+                  <img
                     src={roomMapUrl}
                     alt={`map-${room}`}
+                    className="w-full h-auto"
                     width={400}
                     height={400}
                   />
