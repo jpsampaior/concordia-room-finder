@@ -71,9 +71,9 @@ export default function Instructions() {
                 </h2>
                 <div>
                   <h4 className="text-lg font-bold">Where are you at?</h4>
-                  <TabsList>
-                    <TabsTrigger value="metro">Metro</TabsTrigger>
-                    <TabsTrigger value="other">Other</TabsTrigger>
+                  <TabsList className="w-full">
+                    <TabsTrigger value="metro" className="w-1/2">Metro</TabsTrigger>
+                    <TabsTrigger value="other" className="w-1/2">Other</TabsTrigger>
                   </TabsList>
                 </div>
               </div>
@@ -146,9 +146,9 @@ export default function Instructions() {
                   <h4 className="text-lg font-bold">
                     What option do you want to take?
                   </h4>
-                  <TabsList>
-                    <TabsTrigger value="stairs">Stairs</TabsTrigger>
-                    <TabsTrigger value="elevator">Elevator</TabsTrigger>
+                  <TabsList className="w-full">
+                    <TabsTrigger value="stairs" className="w-1/2">Stairs</TabsTrigger>
+                    <TabsTrigger value="elevator" className="w-1/2">Elevator</TabsTrigger>
                   </TabsList>
                 </div>
               </div>
