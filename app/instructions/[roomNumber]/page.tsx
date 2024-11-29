@@ -5,10 +5,8 @@ import { useBuildingInstructions } from "@/lib/hooks/useBuildingInstructions";
 import { parseRoomNumber } from "@/lib/utils";
 import { useFloorInstructions } from "@/lib/hooks/useFloorInstructions";
 import { useRoomInstructions } from "@/lib/hooks/useRoomInstructions";
-import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HelpButtons } from "@/components/help-buttons";
-import LibraryPic from "@/public/lb-building.jpg";
 
 export default function Instructions() {
   const { roomNumber } = useParams();
