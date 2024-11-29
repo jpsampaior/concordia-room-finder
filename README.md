@@ -17,6 +17,8 @@ Accessible on all devices, but optimized for the **best experience on mobile**:
 
 ### 🎥 Demo of our Website 
 
+Watch the demo video showcasing the features of the Concordia Room Finder:  
+👉 [Demo Video](https://drive.google.com/file/d/1ZMfqEU_SG3Ku1OcWfQuq3RMcmGatCVzZ/view?usp=sharing)
 
 ### 🛠 Getting Started
 
