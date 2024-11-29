@@ -4,6 +4,7 @@ export type Step = {
   instruction: string[];
   option?: string;
   floor?: string[];
+  image?: string;
 };
 
 export const websterLibraryInstructions: Step[] = [
@@ -22,6 +23,7 @@ export const websterLibraryInstructions: Step[] = [
       "→ The tunnel connects to different buildings; follow signs to the Library Building.",
     ],
     option: "metro",
+    image: "/tunnel.png",
   },
   {
     order: 1,
@@ -31,6 +33,7 @@ export const websterLibraryInstructions: Step[] = [
       "→ The Webster Library is oposite the Hall Building; The main entrance is located at 1400 De Maisonneuve Blvd. West on Mackay street.",
     ],
     option: "other",
+    image: "/library.jpg",
   },
 ];
 
@@ -45,6 +48,7 @@ export const websterLibraryFloorInstructions: Step[] = [
     ],
     option: "elevator",
     floor: ["2", "3", "4", "5"],
+    image: "/elevator.png",
   },
   {
     order: 1,
@@ -55,6 +59,7 @@ export const websterLibraryFloorInstructions: Step[] = [
     ],
     option: "stairs",
     floor: ["2", "3", "4", "5"],
+    image: "/stairs.jpg",
   },
   {
     order: 2,
@@ -64,5 +69,6 @@ export const websterLibraryFloorInstructions: Step[] = [
     ],
     option: "stairs",
     floor: ["3", "4", "5"],
+    image: "/stairs-up.jpg",
   },
 ];

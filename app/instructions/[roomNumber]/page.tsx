@@ -5,7 +5,6 @@ import { useBuildingInstructions } from "@/lib/hooks/useBuildingInstructions";
 import { parseRoomNumber } from "@/lib/utils";
 import { useFloorInstructions } from "@/lib/hooks/useFloorInstructions";
 import { useRoomInstructions } from "@/lib/hooks/useRoomInstructions";
-import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HelpButtons } from "@/components/help-buttons";
 
@@ -18,7 +17,12 @@ export default function Instructions() {
   const { floorInstructions } = useFloorInstructions(building, floor);
   const { roomMapUrl, loading, error } = useRoomInstructions(building, room);
 
-  if (!building || !room || !floor || (building == "lb" && error?.includes("404"))) {
+  if (
+    !building ||
+    !room ||
+    !floor ||
+    (building == "lb" && error?.includes("404"))
+  ) {
     return (
       <div className="flex h-[95vh] justify-center items-center">
         <h1 className="text-zinc-300 text-xl">Invalid room number</h1>
@@ -32,7 +36,9 @@ export default function Instructions() {
         <h1 className="text-zinc-300 text-xl">
           Instructions not available for this building yet
         </h1>
-        <span className="text-secondary text-lg">Available buildings: Webster Library (LB)</span>
+        <span className="text-secondary text-lg">
+          Available buildings: Webster Library (LB)
+        </span>
       </div>
     );
   }
@@ -46,16 +52,16 @@ export default function Instructions() {
   }
 
   return (
-    <div className="space-y-6 text-zinc-300 text-center mt-6">
+    <div className="space-y-6 text-zinc-300 text-center mt-6 lg:w-1/2 lg:mx-auto">
       <div className="space-y-8">
         <h1 className="text-2xl text-tertiary font-bold">
           Ready to buzz in? Let&apos;s find your room!
         </h1>
         <div className="space-y-5">
-          <div className="flex flex-col gap-5 lg:flex-row">
+          <div className="flex flex-col gap-5">
             <Tabs
               defaultValue="metro"
-              className="lg:w-1/2 space-y-3 text-start"
+              className=" space-y-3 text-start"
             >
               <div>
                 <h2 className="font-bold text-xl text-secondary">
@@ -63,9 +69,9 @@ export default function Instructions() {
                 </h2>
                 <div>
                   <h4 className="text-lg font-bold">Where are you at?</h4>
-                  <TabsList>
-                    <TabsTrigger value="metro">Metro</TabsTrigger>
-                    <TabsTrigger value="other">Other</TabsTrigger>
+                  <TabsList className="w-full">
+                    <TabsTrigger value="metro" className="w-1/2">Metro</TabsTrigger>
+                    <TabsTrigger value="other" className="w-1/2">Other</TabsTrigger>
                   </TabsList>
                 </div>
               </div>
@@ -84,6 +90,14 @@ export default function Instructions() {
                                   {instruction}
                                 </p>
                               ))}
+                            </div>
+                            <div className="mt-3">
+                              {step.image && (
+                                <img
+                                  src={step.image}
+                                  className="w-full h-auto"
+                                />
+                              )}
                             </div>
                           </div>
                         ))}
@@ -104,6 +118,14 @@ export default function Instructions() {
                                 </p>
                               ))}
                             </div>
+                            <div className="mt-3">
+                              {step.image && (
+                                <img
+                                  src={step.image}
+                                  className="w-full h-auto"
+                                />
+                              )}
+                            </div>
                           </div>
                         ))}
                   </div>
@@ -112,7 +134,7 @@ export default function Instructions() {
             </Tabs>
             <Tabs
               defaultValue="stairs"
-              className="lg:w-1/2 space-y-3 text-start"
+              className=" space-y-3 text-start"
             >
               <div>
                 <h2 className="font-bold text-xl text-secondary">
@@ -122,9 +144,9 @@ export default function Instructions() {
                   <h4 className="text-lg font-bold">
                     What option do you want to take?
                   </h4>
-                  <TabsList>
-                    <TabsTrigger value="stairs">Stairs</TabsTrigger>
-                    <TabsTrigger value="elevator">Elevator</TabsTrigger>
+                  <TabsList className="w-full">
+                    <TabsTrigger value="stairs" className="w-1/2">Stairs</TabsTrigger>
+                    <TabsTrigger value="elevator" className="w-1/2">Elevator</TabsTrigger>
                   </TabsList>
                 </div>
               </div>
@@ -144,6 +166,14 @@ export default function Instructions() {
                                 </p>
                               ))}
                             </div>
+                            <div className="mt-3">
+                              {step.image && (
+                                <img
+                                  src={step.image}
+                                  className="w-full h-auto"
+                                />
+                              )}
+                            </div>
                           </div>
                         ))}
                   </div>
@@ -162,6 +192,14 @@ export default function Instructions() {
                                   {instruction}
                                 </p>
                               ))}
+                            </div>
+                            <div className="mt-3">
+                              {step.image && (
+                                <img
+                                  src={step.image}
+                                  className="w-full h-auto"
+                                />
+                              )}
                             </div>
                           </div>
                         ))}
@@ -190,9 +228,10 @@ export default function Instructions() {
                 </p>
               ) : (
                 roomMapUrl && (
-                  <Image
+                  <img
                     src={roomMapUrl}
                     alt={`map-${room}`}
+                    className="w-full h-auto"
                     width={400}
                     height={400}
                   />
